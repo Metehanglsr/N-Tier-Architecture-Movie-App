@@ -1,0 +1,26 @@
+﻿@model List<Actor>
+
+<section>
+    <h5>Popüler Sanatçılar</h5>
+    <hr>
+    <div class="row mt-5">
+
+        @foreach (var item in @Model)
+        {
+            <div class="card col-md-3 p-0 m-3 d-flex flex-column" style="width: 13rem;">
+                <div class="mb-auto">
+                    <a asp-action="ActorDetails" asp-controller="Movies" asp-route-id="@item.Id"><img src="~/img/profilePhoto.jpg" class="card-img-top img-fluid" alt="..." style="height: 14rem;"></a>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center fs-3">@item.Name</p>
+                    <hr>
+                    <ul style="list-style-type:none">
+                        <li>
+                            <i class="fa-solid fa-star"></i> @item.Name
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</section>

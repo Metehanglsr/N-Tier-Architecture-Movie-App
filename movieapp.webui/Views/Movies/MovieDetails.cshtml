@@ -1,0 +1,64 @@
+﻿@model Movie
+
+
+<div class="container my-5">
+
+
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6">
+            @if (!string.IsNullOrEmpty(Model.TrailerUrl))
+            {
+                <iframe width="560" height="315" src="@Model.TrailerUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            }
+            else
+            {
+                <partial name="../Shared/Partial/ErrorNotFound.cshtml" model="@HelperMethods.NotFound("Trailer")"></partial>
+            }
+        </div>
+        <div class="col-md-6 border p-4">
+            <ul>
+                <li>Title : @Model.Title</li>
+                <li>Release Date : @Model.ReleaseDate</li>
+                <li>Duration : @Model.Duration</li>
+                <li>Rating : @Model.Rating</li>
+                <li> Actors:
+                    @foreach(var item in @Model.MovieActors ?? new List<MovieActor>())
+                    {
+                        <a class="text-decoration-none" asp-action="ActorDetails" asp-controller="Movies" asp-route-id="@item.Actor?.Id">@(item.Actor?.Name)</a>
+                        @("  ")
+                    }
+                </li>
+                <li>
+                    Directors:
+                    @foreach (var item in Model.MovieDirectors ?? new List<MovieDirector>())
+                    {
+                        <a class="text-decoration-none" asp-action="DirectorDetails" asp-controller="Movies" asp-route-id="@item.Director?.Id">@(item.Director?.Name)</a>
+                        @("  ")
+                    }
+                </li>
+                @* <li>Actors : @foreach (var item in Model.MovieActors) {@item.Actor.Name} *@
+                    @* </li> *@
+                @* <li>Directors : @foreach (var item in Model.MovieDirectors) { @item.Director.Name }</li> *@
+                <li>Genres : 
+                    @if(Model.MovieGenres.Count == 0)
+                    {
+                        <span>Genres Not Found</span>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.MovieGenres)
+                        {
+
+                            <a class="text-decoration-none" asp-action="GenreDetails" asp-controller="Movies" asp-route-id="@item.GenreId">@(@item.Genre?.Name)</a>
+                            @("  ")
+                        }    
+                    }
+                </li>
+                <li>Plot : @Model.Plot</li>
+            </ul>
+        </div>
+    </div>
+    <div class="my-5">
+        <partial name="../Shared/Partial/ReviewsPartial.cshtml" model="@Model.Reviews"></partial>
+    </div>
+</div>

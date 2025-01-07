@@ -1,0 +1,20 @@
+﻿@model (Actor actor,List<Actor> actorList)
+
+<div class="row d-flex my-5 align-items-center">
+
+    <div class="col-md-12 border p-4">
+        <ul>
+            <li>Name : @Model.actor.Name</li>
+            <li>Movies :
+                @foreach (var item in @Model.actor.Actors ?? new List<MovieActor>())
+                {
+                    <a class="text-decoration-none" asp-action="MovieDetails" asp-controller="Movies" asp-route-id="@item.Movie?.Id">@(item.Movie?.Title)</a>
+                    @("  ")
+                }
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12 my-5">
+        <partial name="../Shared/Partial/ActorsPartial.cshtml" model="@Model.actorList"></partial>
+    </div>
+</div>

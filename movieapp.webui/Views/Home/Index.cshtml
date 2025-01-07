@@ -1,0 +1,13 @@
+﻿@model (MovieActorModelView,List<Director>)
+@{
+    List<Actor> actorList = Model.Item1.Actors ?? new List<Actor>();
+    List<Movie> movieList = Model.Item1.Movies ?? new List<Movie>();
+}
+<div class="container mt-5">
+    <partial name="HomePartial/PopulerFilmler" model="movieList"></partial>
+    <partial name="HomePartial/VizyondakiFilmler"></partial>
+    <partial name="HomePartial/PuanaGoreFilmler"></partial>
+    <partial name="../Shared/Partial/ActorsPartial.cshtml" model="actorList"></partial>
+    <partial name="../Shared/Partial/DirectorsPartial.cshtml" model="@Model.Item2"></partial>
+    <partial name="HomePartial/Fragmanlar"></partial>
+</div>>

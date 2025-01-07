@@ -1,0 +1,26 @@
+﻿@model List<Movie>
+
+    
+<div class="col-md-8" style="height:200px">
+@foreach (var item in @Model)
+{
+    <div class="card my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/img/@item.ImageUrl" class="card-img-top h-100" alt="..."/>
+            </div>
+                <div class="col-md-8">
+                    <div class="h-100 d-flex flex-column">
+                     <p class="my-5 card-text text-center fs-4">
+                        @item.Title
+                    </p>
+                    <p class="card-text text-center h-100 align-content-center">
+                        @item.Plot
+                    </p>
+                        <a asp-controller="movies" asp-action="MovieDetails" asp-route-id="@item.Id" class="btn btn-outline-info my-3 align-self-center w-75">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+</div>

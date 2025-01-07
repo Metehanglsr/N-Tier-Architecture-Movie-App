@@ -1,0 +1,38 @@
+﻿@model User
+<div class="container my-5 border">
+    <div class="row p-5">
+        <div class="col-md-4">
+            <ul>
+                <li>
+                    User Name = @Model.UserName
+                </li>
+                <li>
+                    Password = <input type="password" disabled name="password" value="@Model.Password" />
+                </li>
+                <li>
+                    Email = @Model.Email
+                </li>
+                <li>
+                    Favorite Movies = 
+                    @if (Model.FavoriteMovies.Count == 0)
+                    {
+                        <span>Favorite Movies Not Found</span>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.FavoriteMovies)
+                        {
+
+                            <a class="text-decoration-none" asp-action="MovieDetails" asp-controller="Movies" asp-route-id="@item.Id">@(@item.Title)</a>
+                            @("  ")
+                        }
+                    }
+                </li>
+            </ul>
+            <a class="btn btn-outline-info w-100">Bilgileri Güncelle</a>
+        </div>
+        <div class="col-md-8">
+            <partial name="../Shared/Partial/ReviewsPartial.cshtml" model="@Model.Reviews"></partial>
+        </div>
+    </div>
+</div>

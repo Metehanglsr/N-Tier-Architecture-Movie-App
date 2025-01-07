@@ -1,0 +1,46 @@
+﻿@model List<Movie>
+
+<section>
+    <h5>Popüler Filmler</h5>
+    <hr>
+    <div class="row mt-5">
+
+    @foreach(var item in @Model)
+    {
+            <div class="card col-md-3 p-0 m-3 d-flex flex-column" style="width: 13rem;">
+                <div class="mb-auto">
+                    <a asp-action="MovieDetails" asp-controller="Movies" asp-route-id="@item.Id"><img src="~/img/@item.ImageUrl" class="card-img-top img-fluid" alt="..." style="height: 14rem;"></a>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-center fs-3">@item.Title</p>
+                    <hr>               
+                    <ul style="list-style-type:none">
+                        <li>
+                            <i class="fa-solid fa-layer-group"></i>
+                            @if (item.MovieGenres.Count == 0)
+                            {
+                                <span>Not Found</span>
+                            }
+                            else
+                            {
+                                foreach (var genres in item.MovieGenres)
+                                {
+                                    <span class="me-1">@genres.Genre?.Name</span>
+                                }
+                            }                            
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-star"></i> @item.Rating
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i> @item.Duration
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-calendar-days"></i> @item.ReleaseDate
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    }
+    </div>
+</section>

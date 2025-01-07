@@ -1,0 +1,9 @@
+﻿@model List<Movie>
+<div class="container my-5">
+    <h2>En Popüler Filmler</h2>
+    <hr />
+    <div class="row">
+        <partial name="MoviesPartial/MovieList" model="@Model"></partial>
+        <partial name="MoviesPartial/MovieFormFilter"></partial>
+    </div>
+</div>

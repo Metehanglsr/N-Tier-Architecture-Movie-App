@@ -1,0 +1,27 @@
+﻿@model User
+<div class="row p-5">
+    <div class="col-md-4">
+        <form action="/" method="post">
+        <ul>
+            <li>
+                <label for="UserName">UserName</label>
+                <input type="text" name="UserName" value="@Model.UserName" />
+            </li>
+            <li>
+                <label for="passwordNow">Password</label>
+                <input type="password" name="passwordNow" value="" aria-describedby="passHelp" />
+                <div id="passHelp" class="form-text">Mevcut Şifrenizi Yazın</div>
+                <input type="password" name="Password" value="" aria-describedby="passHelp2" />
+                <div id="passHelp2" class="form-text">Güncellemek İstediğiniz Şifrenizi Yazın</div>
+
+
+            </li>
+            <li>
+                <input type="email" name="Email" value="@Model.Email" />
+            </li>
+            <input type="hidden" name="Id" value="@Model.Id" />
+        </ul>
+        <button class="btn btn-outline-info w-100" type="submit" asp-action="UpdateUser" asp-controller="User">Bilgileri Güncelle</button>
+        </form>
+    </div>
+</div>

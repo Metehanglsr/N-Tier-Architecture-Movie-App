@@ -1,0 +1,19 @@
+﻿@model List<Review>
+<div>
+    @foreach (var item in Model ?? new List<Review>())
+    {
+        <div class="border rounded mb-5">
+            <div class="d-flex align-items-center">
+                <h4 class="p-1">
+                    @(item.User.UserName != null ? item.User.UserName : "UserNotFound")
+                </h4>
+                <p class="ms-auto me-2">@item.CreatedAt</p>
+            </div>
+            <hr>
+            <div class="d-flex align-items-center my-3">
+                <p class="p-2 m-0">@item.Comment</p>
+                <a class="ms-auto p-2 me-2"><i class="fa-solid fa-heart"><span>&nbsp;</span> @item.LikeCount</i></a>
+            </div>
+        </div>
+    }
+</div>

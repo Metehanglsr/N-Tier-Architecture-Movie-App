@@ -1,0 +1,18 @@
+﻿@model (List<Movie> movies,Genre genre)
+
+<div class="my-5">
+    @if (Model.movies.Count == 0)
+    {    
+        @* <partial name="../Shared/Partial/ErrorNotFound.cshtml" model="errorMessage"></partial> *@
+        <h3 class="alert alert-danger">No movies found in the <span style="color:red">@Model.genre.Name</span> genre.</h3>
+    }
+    else
+    {
+        <h3>@Model.genre.Name Kategorisindeki Filmler Gösteriliyor</h3>
+        <hr>
+    }
+</div>
+<div class="row">
+<partial name="../Movies/MoviesPartial/MovieList.cshtml" model="@Model.movies"></partial>
+<partial name="../Movies/MoviesPartial/MovieFormFilter.cshtml"></partial>
+</div>
