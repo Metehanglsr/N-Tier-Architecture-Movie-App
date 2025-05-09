@@ -1,0 +1,65 @@
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Build Results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.log
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+*.symbols.nupkg
+project.lock.json
+project.fragment.lock.json
+
+## Entity Framework
+App_Data/
+Migrations/
+
+## IIS
+/.vs/
+/iisexpress/
+*.dbmdl
+
+## Web
+wwwroot/node_modules/
+wwwroot/lib/
+
+## Rider
+.idea/
+
+## System
+.DS_Store
+Thumbs.db
+
+## Logs
+*.log
+
+## Environment files
+.env
+
+## Others
+_ReSharper*/
+*.resharper
+*.sln.iml
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# npm packages
+node_modules/
+
+# Backup files
+*.bak
+*.old
+*.tmp
